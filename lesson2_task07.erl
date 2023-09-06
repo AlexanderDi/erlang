@@ -1,14 +1,17 @@
 -module(lesson2_task07).
 -export([flatten/1]).
+-import(lesson2_task05, [reverse/1]).
 
-flatten(List) when is_list(List) ->
+flatten(List) ->
      flatten(List, []). 
 
 flatten([],Acc) ->
-     Acc;
-flatten([H|T],Acc) when is_list(H) ->
-     X = flatten(T,Acc),
-     flatten(H, X);
-flatten([H|T],Acc) ->
-     X = flatten(T,Acc),
-     [H|X].
+     reverse(Acc);
+flatten([[]|T], Acc) ->
+    flatten(T, Acc);
+flatten([[[]|H]|T], Acc)->
+    flatten([H|T], Acc);
+flatten([[H|T1]|T], Acc) ->
+    flatten([H,T1|T], Acc);
+flatten([H|T], Acc) ->
+    flatten(T, [H|Acc]).
