@@ -1,7 +1,9 @@
 -module(lesson2_task03).
 -export([element_at/2]).
+
 element_at(List,A) ->
      element_at(List,A,0,0).
+
 element_at(_,0,_,_) ->
      {undefined};
 element_at([],_,_,_) ->
