@@ -8,7 +8,7 @@ encode(List)->
 
 
 encode([],R,Acc,Acc2) ->
-    reverse([{R,Acc}|Acc2]);
+    reverse([{Acc,R}|Acc2]);
 
 encode([H|T],H=Acc,R,Acc2) ->
     encode(T,Acc,R+1,Acc2);
